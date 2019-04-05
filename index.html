@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://fonts.google.com/css?family/Acme">
+        <link rel="stylesheet" href="style.css">
+        <script src="./assets/scripts/gamemanager.js"></script>
+        <script src="./assets/scripts/player.js"></script>
+        <script src="./assets/scripts/enemy.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <p>My RPG game!!</p>
+            <h2>Choose your character!</h2>
+        </div>
+
+        <div class="interface" id="interface">
+            <a href="#" onclick="GameManager.setGameStart('Warrior')">
+                <img src="./assets/heroes/warrior.png" alt="warrior">
+                <div>
+                    <h3>Warrior</h3>
+                    <p>high health and damage but slow</p>
+                </div>
+            </a>
+            <a href="#" onclick="GameManager.setGameStart('Mage')">
+                <img src="./assets/heroes/mage.png" alt="mage">
+                <div>
+                    <h3>Mage</h3>
+                    <p>very high damage, medium speed and low health</p>
+                </div>
+            </a>
+            <a href="#" onclick="GameManager.setGameStart('Archer')">
+                <img src="./assets/heroes/archer.png" alt="archer">
+                <div>
+                    <h3>Archer</h3>
+                    <p>fast, medium damage, low health</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="actions">
+
+        </div>
+
+        <div class="arena">
+
+        </div>
+
+        <div class="enemy">
+
+        </div>
+    </body>
+</html>
