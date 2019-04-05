@@ -115,6 +115,18 @@ body {
   background-color: #6de647;
 }
 
+.actions a:nth-of-type(4) {
+    background-color: #e64747;
+}
+
+.actions a:nth-of-type(5) {
+    background-color: #e6ce47;
+}
+
+.actions a:nth-of-type(6) {
+    background-color: #6de647;
+}
+
 .actions a:hover {
   opacity: 0.9;
 }
@@ -123,7 +135,6 @@ body {
   width: 100%;
   height: 180px;
   background-color: #1d373d;
-  background-image: url("img/arena-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 35vh;
