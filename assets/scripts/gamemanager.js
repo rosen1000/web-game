@@ -82,7 +82,7 @@ let GameManager = {
         }
     },
     fight: function (type) {
-        if (this.checkWin()) return;
+        if (GameManager.checkWin()) return;
 
         let playerAgl = Math.floor(Math.random() * player.speed);
         let enemyAgl = Math.floor(Math.random() * enemy.speed);
@@ -140,49 +140,14 @@ let GameManager = {
 
         player.defends = false;
         enemy.defends = false;
-
-        /*
-        let attackP = function () {
-            let enemyStats = enemy.attack();
-            if (player.hp <= 0) return true;
-            alert("the enemy dealth " + enemyStats + " dmg");
-            player.hp -= enemyStats;
-            playerHP.innerHTML = 'Health: ' + player.hp;
-            if (player.hp <= 0) { return true } else { return false };
-        }
-
-        let attackE = function () {
-            let playerStats = player.attack();
-            if (enemy.hp <= 0) return true;
-            alert("you dealth " + playerStats + " dmg")
-            enemy.hp -= playerStats;
-            enemyHP.innerHTML = 'Health: ' + enemy.hp;
-            if (enemy.hp <= 0) { return true } else { return false };
-        }
-
-        if (player.speed > enemy.speed) {
-            if (attackE()) {
-                alert("you win!");
-            } else if (attackP()) {
-                alert("you lost :(");
-            }
-        } else {
-            if (attackP()) {
-                alert("you lost :(");
-            } else if (attackE()) {
-                alert("you win!");
-            }
-        }
-        playerHP.innerHTML = 'Health: ' + player.hp;
-        enemyHP.innerHTML = 'Health: ' + enemy.hp;
-        */
     },
     checkWin: function () {
+        let logs = document.querySelector(".arena");
         if (enemy.hp <= 0) {
-            alert("You won!");
+            logs.innerHTML += `<br>${player.classType} (you) won!`;
             return true;
         } else if (player.hp <= 0) {
-            alert("You lost :(");
+            logs.innerHTML += `<br>${enemy.enemyType} (enemy) won :(`;
             return true;
         }
         return false;
