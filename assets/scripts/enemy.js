@@ -1,11 +1,13 @@
 let enemy;
 
-function Enemy(enemyType, hp, mana, atk, speed) {
+function Enemy(enemyType, hp, mana, atk, speed, def) {
     this.enemyType = enemyType;
     this.hp = hp;
     this.mana = mana;
     this.atk = atk;
     this.speed = speed;
+    this.def = def;
+    this.defends = false;
 }
 
 let EnemyMoves = {
@@ -24,12 +26,21 @@ let EnemyMoves = {
         }
 
         let playerHP = document.querySelector(".player-hp");
+        let logs = document.querySelector(".arena");
         let enemyStats = enemyAttack();
 
-        player.hp -= enemyStats;
+        if (player.defends) {
+            enemyStats = Math.floor(enemyStats / 9);
+            player.hp -= enemyStats;
+        } else {
+            player.hp -= enemyStats;
+        }
+
+        logs.innerHTML += `<br>${enemy.enemyType} attacked for ${enemyStats} damage`
         playerHP.innerHTML = '<p class="player-hp">Health: ' + player.hp + '</p>';
     },
     defend: function () {
-        
+        enemy.defends = true;
+        document.querySelector(".arena").innerHTML += `<br>${enemy.enemyType} defends`;
     }
 }
