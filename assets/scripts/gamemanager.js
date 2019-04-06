@@ -121,6 +121,7 @@ let GameManager = {
         if (playerAgl >= enemyAgl) {
             logs.innerHTML = `${player.classType} goes first!`;
             attackP();
+            if (GameManager.checkWin()) return;
             attackE();
             if (enemy.defends && player.defends) {
                 logs.innerHTML += `<br>Nothing happens`;
@@ -130,6 +131,7 @@ let GameManager = {
         } else {
             logs.innerHTML = `${enemy.enemyType} goes first!`;
             attackE();
+            if (GameManager.checkWin()) return;
             attackP();
             if (player.defends && enemy.defends) {
                 logs.innerHTML += `<br>Nothing happens`;
