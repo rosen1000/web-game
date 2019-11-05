@@ -44,6 +44,6 @@ let PlayerMoves = {
         document.querySelector(".arena").innerHTML += `<br>${player.classType} defends`;
     },
     magic: function () {
-        
+        document.querySelector(".arena").innerHTML += `<br>Use magic is still not implemented`
     }
 }

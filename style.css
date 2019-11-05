@@ -134,6 +134,7 @@ body {
 .arena {
   width: 100%;
   height: 180px;
+  color: #fff;
   background-color: #1d373d;
   background-position: center;
   background-repeat: no-repeat;

@@ -2,6 +2,7 @@ let GameManager = {
     setGameStart: function (classType) {
         this.resetPlayer(classType);
         this.setPreFight();
+        this.ingame = true;
     },
     resetPlayer: function (classType) {
         switch (classType) {
@@ -83,6 +84,7 @@ let GameManager = {
     },
     fight: function (type) {
         if (GameManager.checkWin()) return;
+        if (GameManager.ingame == false) return;
 
         let playerAgl = Math.floor(Math.random() * player.speed);
         let enemyAgl = Math.floor(Math.random() * enemy.speed);
@@ -90,15 +92,17 @@ let GameManager = {
         let attackP = function () {
             switch (type) {
                 case "attack":
-                    PlayerMoves.attack();
                     if (GameManager.checkWin()) return;
+                    PlayerMoves.attack();
                     break;
                 case "defend":
+                    if (GameManager.checkWin()) return;
                     PlayerMoves.defend();
                     break;
                 case "magic":
-                    PlayerMoves.magic();
                     if (GameManager.checkWin()) return;
+                    PlayerMoves.magic();
+                    break;
             }
         }
 
@@ -107,12 +111,12 @@ let GameManager = {
             let enemyOption = enemyOptions[Math.floor(Math.random() * enemyOptions.length)];
             switch (enemyOption) {
                 case "attack":
-                    EnemyMoves.attack();
                     if (GameManager.checkWin()) return;
+                    EnemyMoves.attack();
                     break;
                 case "defend":
-                    EnemyMoves.defend();
                     if (GameManager.checkWin()) return;
+                    EnemyMoves.defend();
                     break;
             }
         }
@@ -146,10 +150,14 @@ let GameManager = {
     checkWin: function () {
         let logs = document.querySelector(".arena");
         if (enemy.hp <= 0) {
-            logs.innerHTML += `<br>${player.classType} (you) won!`;
+            if (GameManager.ingame == true) {
+                logs.innerHTML += `<br>${player.classType} (you) won!`;
+            }
+            GameManager.ingame = false;
             return true;
         } else if (player.hp <= 0) {
-            logs.innerHTML += `<br>${enemy.enemyType} (enemy) won :(`;
+            if (GameManager.ingame == true) logs.innerHTML += `<br>${enemy.enemyType} (enemy) won :(`;
+            GameManager.ingame = false;
             return true;
         }
         return false;
